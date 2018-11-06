@@ -6,17 +6,24 @@ services:
         image: postgres:11.0-alpine
         ports:
             - 5432:5432
-        environment:
-            - POSTGRES_USER=eu
-            - POSTGRES_PASSWORD=tu
+        env_file:
+            - .env
         volumes:
             - ../volumes/clientesdb:/var/lib/postgresql/data
     
     pedidosdb:
         image: postgres:11.0-alpine
-        environment:
-            - POSTGRES_USER=eu
-            - POSTGRES_PASSWORD=tu
+        env_file:
+            - .env
+    
+    pedidosrest:
+        image: coticeadifrn/pedidosrest:1.0
+        build:
+            context: ../dockers/pedidosrest
+        env_file:
+            - .env
+        volumes:
+            - ../apps/pedidosrest:/apps/app
 
 
 # docker-compose up
