@@ -24,6 +24,17 @@ services:
             - .env
         volumes:
             - ../apps/pedidosrest:/apps/app
+    
+    clientesui:
+        image: coticeadifrn/vue:1.0
+        ports:
+            - 8080:8080
+        build:
+            context: ../dockers/clientesui
+        env_file:
+            - .env
+        volumes:
+            - ../apps/clientesui:/apps/app
 
 
 # docker-compose up
