@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp ../apps/pedidosui/package* ../dockers/pedidosui/ && \
+docker-compose build --force-rm $@ && \
+mv ../dockers/pedidosui/package*  ../apps/pedidosui/ 

@@ -33,7 +33,7 @@ services:
             - ../apps/clientesui:/apps/app
 
     pedidosui:
-        image: coticeadifrn/react:1.0
+        image: coticeadifrn/pedidosui:1.0
         ports:
             - 3000:3000
         build:
