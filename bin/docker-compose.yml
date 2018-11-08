@@ -45,7 +45,16 @@ services:
         env_file:
             - .env
         volumes:
-            - ../apps/pedidosui:/apps/app        
+            - ../apps/pedidosui:/apps/app   
+            
+    clientesrest:
+        image: coticeadifrn/clientesrest:1.0
+        build:
+            context: ../dockers/clientesrest
+        env_file:
+            - .env
+        volumes:
+            - ../apps/clientesrest/clientesrest:/apps/app
 
 
 # docker-compose up
