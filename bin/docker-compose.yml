@@ -4,12 +4,8 @@ services:
     
     clientesdb:
         image: postgres:11.0-alpine
-        ports:
-            - 5432:5432
         env_file:
             - .env
-        volumes:
-            - ../volumes/clientesdb:/var/lib/postgresql/data
     
     pedidosdb:
         image: postgres:11.0-alpine

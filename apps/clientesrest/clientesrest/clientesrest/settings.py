@@ -26,7 +26,7 @@ SECRET_KEY = 'b725(vmr4=v@r7yim-)&w5a@dh+s2#8ebe674i5hy6i36*ujab'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 
 
 # Application definition
