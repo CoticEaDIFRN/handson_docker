@@ -49,6 +49,8 @@ services:
             
     clientesrest:
         image: coticeadifrn/clientesrest:1.0
+        ports:
+            - 9000:9000
         build:
             context: ../dockers/clientesrest
         env_file:
