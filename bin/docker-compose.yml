@@ -36,6 +36,17 @@ services:
         volumes:
             - ../apps/clientesui:/apps/app
 
+    pedidosui:
+        image: coticeadifrn/react:1.0
+        ports:
+            - 3000:3000
+        build:
+            context: ../dockers/pedidosui
+        env_file:
+            - .env
+        volumes:
+            - ../apps/pedidosui:/apps/app        
+
 
 # docker-compose up
 # docker ps -a
