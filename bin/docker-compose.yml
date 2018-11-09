@@ -52,7 +52,7 @@ services:
         env_file:
             - .env
         volumes:
-            - ../apps/clientesrest/clientesrest:/apps/app
+            - ../apps/clientesrest:/apps/app
 
 
 # docker-compose up

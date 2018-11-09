@@ -1,6 +1,6 @@
-pip install -r requirements-app.txt
-
 if [ "True" = "$DJANGO_DEBUG" ]; then
+    #python3 manage.py migrate
+    #python3 manage.py createsuperuser
     python3 manage.py runserver 0.0.0.0:9000
 else
     gunicorn \
