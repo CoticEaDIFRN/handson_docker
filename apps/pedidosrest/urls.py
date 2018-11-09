@@ -38,9 +38,9 @@ urlpatterns = [
         settings.URL_PATH_PREFIX,
         include(
             [
-                path(r'^', include(router.urls)),
+                path('api/', include(router.urls)),
                 path('admin/', admin.site.urls),
-                path('', redirect("admin")),
+                path('', redirect("admin/")),
             ]
         )
     ),

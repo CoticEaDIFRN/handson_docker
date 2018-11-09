@@ -32,7 +32,7 @@ MY_APPS = env_as_list('MY_APPS', 'pedidosrest')
 
 DEV_APPS = env_as_list('DEV_APPS', 'debug_toolbar,django_extensions' if DEBUG else '')
 
-THIRD_APPS = env_as_list('THIRD_APPS', '')
+THIRD_APPS = env_as_list('THIRD_APPS', 'rest_framework')
 
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
@@ -44,8 +44,7 @@ DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
 INSTALLED_APPS = MY_APPS + THIRD_APPS + DEV_APPS + DJANGO_APPS
 
 
-MIDDLEWARE = env_as_list('MIDDLEWARE', 'corsheaders.middleware.CorsMiddleware,'
-                                       'oauth2_provider.middleware.OAuth2TokenMiddleware,'
+MIDDLEWARE = env_as_list('MIDDLEWARE', 'oauth2_provider.middleware.OAuth2TokenMiddleware,'
                                        'django.middleware.security.SecurityMiddleware,'
                                        'django.contrib.sessions.middleware.SessionMiddleware,'
                                        'django.middleware.common.CommonMiddleware,'
@@ -59,7 +58,7 @@ if DEBUG:
 
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
 
-URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'app/')
+URL_PATH_PREFIX = env('URL_PATH_PREFIX', 'pedidosrest/')
 
 TEMPLATES = [
     {
@@ -90,9 +89,9 @@ DATABASES = {
     }
 }
 
-AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_python3_ldap.auth.LDAPBackend,'
-                                          'oauth2_provider.backends.OAuth2Backend,'
-                                          'django.contrib.auth.backends.ModelBackend')
+# AUTHENTICATION_BACKENDS = env_as_list('AUTHENTICATION_BACKENDS', 'django_python3_ldap.auth.LDAPBackend,'
+#                                           'oauth2_provider.backends.OAuth2Backend,'
+#                                           'django.contrib.auth.backends.ModelBackend')
 
 AUTH_PASSWORD_VALIDATORS = env_as_list_of_maps('DJANGO_UTH_PASSWORD_VALIDATORS', 'NAME',
                                                'django.contrib.auth.password_validation.UserAttributeSimilarityValidator,'
@@ -107,7 +106,7 @@ USE_I18N = env_as_bool('DJANGO_USE_I18N', True)
 USE_L10N = env_as_bool('DJANGO_USE_L10N', True)
 USE_TZ = env_as_bool('DJANGO_USE_TZ', True)
 
-STATIC_URL = env('DJANGO_STATIC_URL', '/static/')
+STATIC_URL = env('DJANGO_STATIC_URL', '/%sstatic/' % URL_PATH_PREFIX)
 
 LOGGING = {
     'version': 1,
