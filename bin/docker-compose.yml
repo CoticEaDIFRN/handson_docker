@@ -1,7 +1,19 @@
 version: '3'
 
 services:
-    
+
+    proxy:
+        image: nginx:1.15.6-alpine
+        ports:
+            - "80:80"
+        volumes:
+            - "../dockers/proxy:/etc/nginx/conf.d"
+        depends_on:
+            # - pedidosrest
+            - clientesrest
+            # - pedidosui
+            - clientesui
+
     clientesdb:
         image: postgres:11.0-alpine
         env_file:
@@ -53,6 +65,8 @@ services:
             - .env
         volumes:
             - ../apps/clientesrest:/apps/app
+        depends_on:
+            - clientesdb
 
 
 # docker-compose up

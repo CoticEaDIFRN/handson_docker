@@ -60,6 +60,7 @@ if DEBUG:
     MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = 'clientesrest.urls'
+URL_PATH_PREFIX = env('CLIENTESREST_URL_PATH_PREFIX', 'clientesrest/')
 
 TEMPLATES = [
     {
@@ -131,4 +132,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/%sstatic/' % URL_PATH_PREFIX
